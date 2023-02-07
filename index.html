@@ -18,7 +18,9 @@
       crossorigin
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
     ></script>
-    <script>
+    <!-- 使用JSX引入babel 不适应生产环境，使你的网站变更慢-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
       const e = React.createElement;
 
       class LikeButton extends React.Component {
@@ -32,10 +34,10 @@
             return "You liked this.";
           }
 
-          return e(
-            "button",
-            { onClick: () => this.setState({ liked: true }) },
-            `${this.props.test}`
+          return (
+            <button onClick={() => this.setState({ liked: true })}>
+              {this.props.test}
+            </button>
           );
         }
       }
