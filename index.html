@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="like_button_container"></div>
+    <div class="like_button_container"></div>
+    <div class="like_button_container"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script>
+      const e = React.createElement;
+
+      class LikeButton extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { liked: false };
+        }
+
+        render() {
+          if (this.state.liked) {
+            return "You liked this.";
+          }
+
+          return e(
+            "button",
+            { onClick: () => this.setState({ liked: true }) },
+            `${this.props.test}`
+          );
+        }
+      }
+      const domContainer = document.querySelectorAll(".like_button_container");
+      domContainer.forEach((element) => {
+        const root = ReactDOM.createRoot(element);
+        //   React.createElement 执行里面render 然后 return e() 返回button
+        root.render(React.createElement(LikeButton, { test: "测试参数" }));
+      });
+    </script>
+  </body>
+</html>
