@@ -7,6 +7,7 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="like_button_container"></div>
     <div class="like_button_container"></div>
     <div class="like_button_container"></div>
     <div class="like_button_container"></div>
@@ -19,8 +20,8 @@
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
     ></script>
     <!-- 使用JSX引入babel 不适应生产环境，使你的网站变更慢-->
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script type="text/babel">
+    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+    <!-- <script>
       const e = React.createElement;
 
       class LikeButton extends React.Component {
@@ -35,6 +36,7 @@
           }
 
           return (
+            // JSX写法
             <button onClick={() => this.setState({ liked: true })}>
               {this.props.test}
             </button>
@@ -45,8 +47,14 @@
       domContainer.forEach((element) => {
         const root = ReactDOM.createRoot(element);
         //   React.createElement 执行里面render 然后 return e() 返回button
+        // React.createElement 是react 的虚拟dom VNode：JSX-VNode
+        //  root.render 把VNode 变成真实dom
         root.render(React.createElement(LikeButton, { test: "测试参数" }));
       });
-    </script>
+      //   安装JSX预处理器
+      // npm i babel-cli@6 babel-preset-react-app@3
+      // 执行 npx babel --watch src --out-dir . --presets react-app/prod
+    </script> -->
+    <script src="./like_button.js"></script>
   </body>
 </html>
